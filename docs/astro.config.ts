@@ -5,18 +5,7 @@ import starlightThemeRapide from 'starlight-theme-rapide'
 export default defineConfig({
   integrations: [
     starlight({
-      // ######### START: این قسمت اضافه شده است #########
-      head: [
-        {
-          tag: 'script',
-          // Adds the Netlify Identity widget to all pages
-          attrs: {
-            src: 'https://identity.netlify.com/v1/netlify-identity-widget.js',
-            defer: true,
-          },
-        },
-      ],
-      // ######### END: این قسمت اضافه شده است #########
+      // The head section for Netlify Identity has been removed.
       credits: true,
       editLink: {
         baseUrl: 'https://github.com/HiDeoo/starlight-theme-rapide/edit/main/docs/',
@@ -43,7 +32,6 @@ export default defineConfig({
       title: 'Starlight Rapide',
     }),
   ],
-  // نکته مهم: بهتر است این آدرس را به آدرس سایت خودتان تغییر دهید
+  // This site URL is now correct for your domain.
   site: 'https://codes.peditx.ir',
 })
-
