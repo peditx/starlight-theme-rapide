@@ -1,0 +1,22 @@
+# This is the final, standard configuration file.
+
+backend:
+  name: github
+  repo: peditx/starlight-theme-rapide
+  branch: main
+  # This is the standard method for direct GitHub authentication
+  auth_type: implicit
+  app_id: Ov23liMQ36VXRPwraTVC
+
+media_folder: "docs/public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "docs/src/content/docs"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
