@@ -1,11 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center min-h-screen">
+    <div id="login-container" class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm w-full transition-all duration-300">
+        <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+        <form id="login-form" class="space-y-4">
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                <input type="password" id="password" class="mt-1 block w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-300" required>
+            </div>
+            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300">
+                Login
+            </button>
+        </form>
+        <div id="message-box" class="mt-4 p-3 rounded-md text-sm text-center hidden"></div>
+    </div>
+
+    <div id="cms-container" class="hidden w-full h-full">
+        <!-- The CMS will be loaded here dynamically -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const passwordInput = document.getElementById('password');
+            const loginContainer = document.getElementById('login-container');
+            const cmsContainer = document.getElementById('cms-container');
+            const messageBox = document.getElementById('message-box');
+
+            const SECRET_PASSWORD = 'peditx'; // WARNING: This password is hardcoded and not secure.
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (passwordInput.value === SECRET_PASSWORD) {
+                    showCMS();
+                } else {
+                    showMessage('Invalid password. Please try again.', 'bg-red-100 text-red-700');
+                }
+            });
+
+            function showMessage(message, className) {
+                messageBox.textContent = message;
+                messageBox.className = `mt-4 p-3 rounded-md text-sm text-center ${className}`;
+                messageBox.style.display = 'block';
+            }
+
+            function showCMS() {
+                loginContainer.style.display = 'none';
+                cmsContainer.style.display = 'block';
+                document.title = 'CMS Admin';
+                
+                // Dynamically load the CMS script and initialize it
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+                script.onload = () => {
+                    if (window.CMS) {
+                        window.CMS_CONFIG = {
+                            backend: {
+                                name: 'git-gateway', // Use Git Gateway for a simple backend
+                                branch: 'main'
+                            },
+                            local_backend: {
+                                url: 'http://localhost:3000/api/v1' // This is a placeholder as the local backend is a client-side solution
+                            },
+                            media_folder: 'docs/public/uploads',
+                            public_folder: '/uploads',
+                            collections: [
+                                {
+                                    name: "projects",
+                                    label: "Projects",
+                                    folder: "docs/src/content/docs",
+                                    create: true,
+                                    fields: [
+                                        { label: "Title", name: "title", widget: "string" },
+                                        { label: "Publish Date", name: "date", widget: "datetime", required: false },
+                                        { label: "Body", name: "body", widget: "markdown" }
+                                    ]
+                                }
+                            ]
+                        };
+
+                        // Initialize the CMS
+                        window.CMS.init({ config: window.CMS_CONFIG });
+                    } else {
+                        showMessage('Failed to load CMS.', 'bg-red-100 text-red-700');
+                    }
+                };
+                document.body.appendChild(script);
+            }
+        });
+    </script>
 </body>
 </html>
