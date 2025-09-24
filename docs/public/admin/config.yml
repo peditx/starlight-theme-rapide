@@ -1,10 +1,9 @@
 backend:
   name: github
-  repo: peditx/starlight-theme-rapide  # ریپوی GitHub خودت
+  repo: peditx/starlight-theme-rapide  # ریپوی خودت
   branch: main
-  # بجای OAuth از Personal Access Token استفاده می‌کنیم
   auth_type: token
-  token: YOUR_GITHUB_PERSONAL_ACCESS_TOKEN  # ← اینو با PAT خودت جایگزین کن
+  token: "{{ env.YOUR_GITHUB_PERSONAL_ACCESS_TOKEN }}"  # ← Secret واقعی تو
 
 media_folder: "docs/public/uploads"
 public_folder: "/uploads"
