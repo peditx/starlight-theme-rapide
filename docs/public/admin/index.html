@@ -14,24 +14,21 @@
         branch: 'main',
         auth_type: 'implicit',
         app_id: 'Ov23liMQ36VXRPwraTVC',
+        // مسیر بازگشت به پنل مدیریت را مشخص می‌کند
+        redirect_url: 'https://codes.peditx.ir/admin/',
       },
       media_folder: 'docs/public/uploads',
       public_folder: '/uploads',
       collections: [
         {
-          name: 'project',
-          label: 'Project',
-          files: [
-            {
-              label: 'Homepage Content',
-              name: 'index',
-              file: 'docs/src/content/docs/index.md',
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Description', name: 'description', widget: 'string' },
-                { label: 'Body', name: 'body', widget: 'markdown' },
-              ],
-            },
+          name: 'projects',
+          label: 'Projects',
+          folder: 'docs/src/content/docs',
+          create: true,
+          fields: [
+            { label: 'Title', name: 'title', widget: 'string' },
+            { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
+            { label: 'Body', name: 'body', widget: 'markdown' },
           ],
         },
       ],
