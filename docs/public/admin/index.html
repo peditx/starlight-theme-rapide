@@ -4,37 +4,38 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- اسکریپت خارجی حذف شد، دیگر به آن نیازی نیست -->
   </head>
   <body>
-    <!-- اسکریپت اصلی پنل مدیریت -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- استفاده از یک نسخه خاص و پایدار از کتابخانه -->
+    <script src="https://unpkg.com/decap-cms@3.1.10/dist/decap-cms.js"></script>
     <script>
-      CMS.init({
-        config: {
-          backend: {
-            name: 'github',
-            repo: 'peditx/starlight-theme-rapide',
-            branch: 'main',
-            // این دو خط، روش صحیح و داخلی برای ورود با گیت‌هاب هستند
-            auth_type: 'implicit',
-            app_id: 'Ov23liMQ36VXRPwraTVC',
-          },
-          media_folder: 'docs/public/uploads',
-          public_folder: '/uploads',
-          collections: [
-            {
-              name: 'project',
-              label: 'Projects',
-              folder: 'docs/src/content/docs',
-              create: true,
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Body', name: 'body', widget: 'markdown' },
-              ],
+      // این کد صبر می‌کند تا تمام صفحه به طور کامل آماده شود و سپس اجرا می‌شود
+      window.addEventListener('DOMContentLoaded', function () {
+        CMS.init({
+          config: {
+            backend: {
+              name: 'github',
+              repo: 'peditx/starlight-theme-rapide',
+              branch: 'main',
+              auth_type: 'implicit',
+              app_id: 'Ov23liMQ36VXRPwraTVC',
             },
-          ],
-        },
+            media_folder: 'docs/public/uploads',
+            public_folder: '/uploads',
+            collections: [
+              {
+                name: 'project',
+                label: 'Projects',
+                folder: 'docs/src/content/docs',
+                create: true,
+                fields: [
+                  { label: 'Title', name: 'title', widget: 'string' },
+                  { label: 'Body', name: 'body', widget: 'markdown' },
+                ],
+              },
+            ],
+          },
+        });
       });
     </script>
   </body>
