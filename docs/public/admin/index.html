@@ -7,9 +7,9 @@
   </head>
   <body>
     <!-- 
-      This is the standard and most reliable way to initialize Decap CMS.
-      We define the configuration *before* loading the main CMS script.
-      This prevents all timing and race condition issues.
+      Decap CMS initialization
+      We define the configuration BEFORE loading the main CMS script
+      to avoid timing and race condition issues.
     -->
     <script>
       window.CMS_CONFIG = {
@@ -18,7 +18,8 @@
           repo: 'peditx/starlight-theme-rapide',
           branch: 'main',
           auth_type: 'implicit',
-          app_id: 'Ov23liMQ36VXRPwraTVC',
+          app_id: 'Ov23liMQ36VXRPwraTVC', // همون Client ID که از GitHub OAuth App گرفتی
+          base_url: 'https://auth.decapcms.org', // مهم: بدون این خط میره سراغ Netlify
         },
         media_folder: 'docs/public/uploads',
         public_folder: '/uploads',
@@ -37,6 +38,11 @@
         ],
       };
     </script>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- 
+      برای جلوگیری از کش نسخه قدیمی، ورژن decap-cms رو دقیق مشخص می‌کنیم.
+      می‌تونی این رو به آخرین نسخه stable تغییر بدی (مثلاً 3.2.0 یا 3.3.0)
+    -->
+    <script src="https://unpkg.com/decap-cms@3.2.0/dist/decap-cms.js"></script>
   </body>
 </html>
