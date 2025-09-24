@@ -4,12 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-  
-  <!-- Using a specific, stable version of Decap CMS to rule out version-specific bugs -->
-  <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
 </head>
 <body>
-  <!-- The CMS will automatically look for /admin/config.yml -->
+  <!-- By placing the script at the end of the body, we ensure the DOM is fully loaded before execution. -->
+  <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
 </body>
 </html>
 
