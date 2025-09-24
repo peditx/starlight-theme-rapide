@@ -3,7 +3,7 @@ backend:
   repo: peditx/starlight-theme-rapide
   branch: main
   auth_type: implicit
-  app_id: YOUR_GITHUB_CLIENT_ID
+  app_id: Ov23liMQ36VXRPwraTVC
   base_url: https://auth.decapcms.org
 
 media_folder: "docs/public/uploads"
