@@ -7,6 +7,7 @@ backend:
   # This is the standard method for direct GitHub authentication
   auth_type: implicit
   app_id: Ov23liMQ36VXRPwraTVC
+  base_url: https://auth.decapcms.org
 
 media_folder: "docs/public/uploads"
 public_folder: "/uploads"
