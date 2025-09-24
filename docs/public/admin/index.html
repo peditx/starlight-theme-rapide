@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
-  </head>
-  <body>
-    <!-- 
-      Decap CMS initialization
-      We define the configuration BEFORE loading the main CMS script
-      to avoid timing and race condition issues.
-    -->
-    <script>
-      window.CMS_CONFIG = {
-        backend: {
-          name: 'github',
-          repo: 'peditx/starlight-theme-rapide',
-          branch: 'main',
-          auth_type: 'implicit',
-          app_id: 'Ov23liMQ36VXRPwraTVC', // همون Client ID که از GitHub OAuth App گرفتی
-          base_url: 'https://auth.decapcms.org', // مهم: بدون این خط میره سراغ Netlify
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <style>
+    /* دکمه login مخفی می‌شه چون نیازی بهش نیست */
+    .nc-loginButton { display: none !important; }
+  </style>
+</head>
+<body>
+  <script>
+    // Config اصلی Decap CMS
+    window.CMS_CONFIG = {
+      backend: {
+        name: 'github',
+        repo: 'peditx/starlight-theme-rapide', // ریپوی خودت
+        branch: 'main',
+        auth_type: 'token',
+        // مقدار توکن از Secret گرفته می‌شود
+        token: "{{ env.GITHUB_PAT }}",
+      },
+      media_folder: 'docs/public/uploads',
+      public_folder: '/uploads',
+      collections: [
+        {
+          name: 'projects',
+          label: 'Projects',
+          folder: 'docs/src/content/docs',
+          create: true,
+          fields: [
+            { label: 'Title', name: 'title', widget: 'string' },
+            { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
+            { label: 'Body', name: 'body', widget: 'markdown' },
+          ],
         },
-        media_folder: 'docs/public/uploads',
-        public_folder: '/uploads',
-        collections: [
-          {
-            name: 'projects',
-            label: 'Projects',
-            folder: 'docs/src/content/docs',
-            create: true,
-            fields: [
-              { label: 'Title', name: 'title', widget: 'string' },
-              { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
-              { label: 'Body', name: 'body', widget: 'markdown' },
-            ],
-          },
-        ],
-      };
-    </script>
+      ],
+    };
 
-    <!-- 
-      برای جلوگیری از کش نسخه قدیمی، ورژن decap-cms رو دقیق مشخص می‌کنیم.
-      می‌تونی این رو به آخرین نسخه stable تغییر بدی (مثلاً 3.2.0 یا 3.3.0)
-    -->
-    <script src="https://unpkg.com/decap-cms@3.2.0/dist/decap-cms.js"></script>
-  </body>
+    console.log("CMS_CONFIG loaded:", window.CMS_CONFIG);
+  </script>
+
+  <!-- لود کردن Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
+</body>
 </html>
