@@ -3,36 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <title>Content Management</title>
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <script>
-    window.CMS_CONFIG = {
-      backend: {
-        name: 'github',
-        repo: 'peditx/starlight-theme-rapide',
-        branch: 'main',
-        auth_type: 'implicit',
-        app_id: 'Ov23liMQ36VXRPwraTVC',
-      },
-      media_folder: 'docs/public/uploads',
-      public_folder: '/uploads',
-      collections: [
-        {
-          name: 'projects',
-          label: 'Projects',
-          folder: 'docs/src/content/docs',
-          create: true,
-          fields: [
-            { label: 'Title', name: 'title', widget: 'string' },
-            { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
-            { label: 'Body', name: 'body', widget: 'markdown' },
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+  <div class="container mx-auto p-4 flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl text-center">
+      <h1 class="text-3xl font-bold mb-4 text-gray-800">Website Content Management</h1>
+      <p class="text-gray-600 mb-6">Loading the Decap CMS admin panel. Please wait.</p>
+      
+      <!-- This script defines the Decap CMS configuration -->
+      <script>
+        window.CMS_CONFIG = {
+          backend: {
+            name: 'github',
+            repo: 'peditx/starlight-theme-rapide',
+            branch: 'main',
+            auth_type: 'implicit',
+            app_id: 'Ov23liMQ36VXRPwraTVC',
+          },
+          media_folder: 'docs/public/uploads',
+          public_folder: '/uploads',
+          collections: [
+            {
+              name: 'projects',
+              label: 'Projects',
+              folder: 'docs/src/content/docs',
+              create: true,
+              fields: [
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
+                { label: 'Body', name: 'body', widget: 'markdown' },
+              ],
+            },
           ],
-        },
-      ],
-    };
-  </script>
+        };
+      </script>
 
-  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+      <!-- This script loads Decap CMS from the CDN -->
+      <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+    </div>
+  </div>
 </body>
 </html>
