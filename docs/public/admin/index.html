@@ -4,26 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- Load the main CMS script -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- This script handles the GitHub OAuth flow directly, without Netlify -->
+    <script src="https://unpkg.com/decap-cms-oauth-provider-github@1.x.x/dist/decap-cms-oauth-provider-github.js"></script>
   </head>
   <body>
-    <!-- The CMS will be initialized here -->
+    <!-- Load the main CMS script -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      // Register the direct GitHub OAuth provider
+      DecapCmsOauthProviderGithub.init();
+
       CMS.init({
         config: {
-          // Use the direct GitHub backend
           backend: {
             name: 'github',
             repo: 'peditx/starlight-theme-rapide',
             branch: 'main',
           },
-
-          // Media files will be stored in this folder
           media_folder: 'docs/public/uploads',
           public_folder: '/uploads',
-
-          // This is your content collection
           collections: [
             {
               name: 'project',
