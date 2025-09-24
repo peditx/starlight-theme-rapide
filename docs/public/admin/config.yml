@@ -1,12 +1,9 @@
-# This is the final, standard configuration file.
-
 backend:
   name: github
   repo: peditx/starlight-theme-rapide
   branch: main
-  # This is the standard method for direct GitHub authentication
   auth_type: implicit
-  app_id: Ov23liMQ36VXRPwraTVC
+  app_id: YOUR_GITHUB_CLIENT_ID
   base_url: https://auth.decapcms.org
 
 media_folder: "docs/public/uploads"
