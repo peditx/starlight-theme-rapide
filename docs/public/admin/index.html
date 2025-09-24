@@ -1,38 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CMS Admin</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
 </head>
 <body>
-    <script>
-        window.CMS_CONFIG = {
-            backend: {
-                name: 'github',
-                repo: 'peditx/starlight-theme-rapide',
-                branch: 'main',
-                auth_type: 'implicit',
-                app_id: 'Ov23liMQ36VXRPwraTVC',
-                redirect_uri: '/'
-            },
-            media_folder: 'docs/public/uploads',
-            public_folder: '/uploads',
-            collections: [
-                {
-                    name: "projects",
-                    label: "Projects",
-                    folder: "docs/src/content/docs",
-                    create: true,
-                    fields: [
-                        { label: "Title", name: "title", widget: "string" },
-                        { label: "Publish Date", name: "date", widget: "datetime", required: false },
-                        { label: "Body", name: "body", widget: "markdown" }
-                    ]
-                }
-            ]
-        };
-    </script>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>
