@@ -12,7 +12,10 @@
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
       // Register the direct GitHub OAuth provider
-      DecapCmsOauthProviderGithub.init();
+      // REPLACE THE PLACEHOLDER BELOW WITH YOUR ACTUAL GITHUB OAUTH APP CLIENT ID
+      DecapCmsOauthProviderGithub.init({
+        appID: 'Ov23liMQ36VXRPwraTVC'
+      });
 
       CMS.init({
         config: {
