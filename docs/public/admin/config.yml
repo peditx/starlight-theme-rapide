@@ -2,8 +2,9 @@ backend:
   name: github
   repo: peditx/starlight-theme-rapide
   branch: main
-  auth_type: token
-  token: "{{ env.YOUR_GITHUB_PERSONAL_ACCESS_TOKEN }}"  # ← Secret واقعی
+  auth_type: implicit
+  app_id: Ov23liMQ36VXRPwraTVC   # همون App ID Netlify
+  # redirect_url تو Netlify معمولا خودش درست handle می‌کنه
 
 media_folder: "docs/public/uploads"
 public_folder: "/uploads"
