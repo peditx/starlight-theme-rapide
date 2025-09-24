@@ -4,8 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Management</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .login-button {
+      background-color: #333;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="container" id="login-container">
+    <h1>Login</h1>
+    <button class="login-button" onclick="loginWithGithub()">Login with GitHub</button>
+  </div>
   <script>
     window.CMS_CONFIG = {
       backend: {
@@ -14,8 +44,6 @@
         branch: 'main',
         auth_type: 'implicit',
         app_id: 'Ov23liMQ36VXRPwraTVC',
-        // مسیر بازگشت به پنل مدیریت را مشخص می‌کند
-        redirect_url: 'https://codes.peditx.ir/admin/',
       },
       media_folder: 'docs/public/uploads',
       public_folder: '/uploads',
@@ -33,7 +61,18 @@
         },
       ],
     };
+
+    function loginWithGithub() {
+      const authUrl = `https://app.netlify.com/auth?app_id=${window.CMS_CONFIG.backend.app_id}&redirect_url=${window.location.href}`;
+      window.location.href = authUrl;
+    }
+
+    if (window.location.hash.includes('access_token=')) {
+      document.getElementById('login-container').style.display = 'none';
+      const cmsScript = document.createElement('script');
+      cmsScript.src = "https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js";
+      document.body.appendChild(cmsScript);
+    }
   </script>
-  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
 </body>
 </html>
