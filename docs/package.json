@@ -9,8 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "eslint . --cache --max-warnings=0",
-    "tina-dev": "tinacms dev -c \"astro dev\""
+    "lint": "eslint . --cache --max-warnings=0"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.34.0",
@@ -42,4 +41,9 @@
     "directory": "docs"
   },
   "bugs": "https://github.com/HiDeoo/starlight-theme-rapide/issues"
+  ,"pnpm": {
+    "overrides": {
+      "esm": "3.2.22"
+    }
+  }
 }
