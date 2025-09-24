@@ -3,8 +3,8 @@ backend:
   repo: peditx/starlight-theme-rapide
   branch: main
   auth_type: implicit
-  app_id: Ov23liMQ36VXRPwraTVC   # همون App ID Netlify
-  # redirect_url تو Netlify معمولا خودش درست handle می‌کنه
+  app_id: Ov23liMQ36VXRPwraTVC   # همان App ID Netlify
+  # redirect_url توسط Netlify خودش handle می‌شود
 
 media_folder: "docs/public/uploads"
 public_folder: "/uploads"
