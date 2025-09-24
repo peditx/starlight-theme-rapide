@@ -9,14 +9,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "eslint . --cache --max-warnings=0"
+    "lint": "eslint . --cache --max-warnings=0",
+    "tina-dev": "tinacms dev -c \"astro dev\""
   },
   "dependencies": {
     "@astrojs/starlight": "^0.34.0",
     "@hideoo/starlight-plugins-docs-components": "^0.4.0",
     "astro": "^5.7.4",
     "sharp": "^0.33.5",
-    "starlight-theme-rapide": "workspace:*"
+    "starlight-theme-rapide": "workspace:*",
+    "tinacms": "^1.6.0"
   },
   "engines": {
     "node": ">=18"
