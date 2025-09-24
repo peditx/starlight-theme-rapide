@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: peditx/starlight-theme-rapide  # ریپوی خودت
+  repo: peditx/starlight-theme-rapide
   branch: main
   auth_type: token
-  token: "{{ env.YOUR_GITHUB_PERSONAL_ACCESS_TOKEN }}"  # ← Secret واقعی تو
+  token: "{{ env.YOUR_GITHUB_PERSONAL_ACCESS_TOKEN }}"  # ← استفاده از Secret واقعی
 
 media_folder: "docs/public/uploads"
 public_folder: "/uploads"
