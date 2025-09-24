@@ -63,7 +63,7 @@
     };
 
     function loginWithGithub() {
-      const authUrl = `https://app.netlify.com/auth?app_id=${window.CMS_CONFIG.backend.app_id}&redirect_url=${window.location.href}`;
+      const authUrl = `https://app.netlify.com/auth?app_id=${window.CMS_CONFIG.backend.app_id}&redirect_url=${window.location.protocol}//${window.location.host}/`;
       window.location.href = authUrl;
     }
 
