@@ -7,10 +7,36 @@
   </head>
   <body>
     <!-- 
-      By placing the script at the end of the body, we ensure that the page 
-      is fully loaded before the script runs. This is the most reliable way 
-      to prevent the 'appendChild' error.
+      This is the standard and most reliable way to initialize Decap CMS.
+      We define the configuration *before* loading the main CMS script.
+      This prevents all timing and race condition issues.
     -->
+    <script>
+      window.CMS_CONFIG = {
+        backend: {
+          name: 'github',
+          repo: 'peditx/starlight-theme-rapide',
+          branch: 'main',
+          auth_type: 'implicit',
+          app_id: 'Ov23liMQ36VXRPwraTVC',
+        },
+        media_folder: 'docs/public/uploads',
+        public_folder: '/uploads',
+        collections: [
+          {
+            name: 'projects',
+            label: 'Projects',
+            folder: 'docs/src/content/docs',
+            create: true,
+            fields: [
+              { label: 'Title', name: 'title', widget: 'string' },
+              { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
+              { label: 'Body', name: 'body', widget: 'markdown' },
+            ],
+          },
+        ],
+      };
+    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
