@@ -19,20 +19,14 @@
       public_folder: '/uploads',
       collections: [
         {
-          name: 'pages',
-          label: 'Pages',
-          files: [
-            {
-              label: 'Homepage',
-              name: 'homepage',
-              file: 'docs/src/content/docs/index.md',
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Description', name: 'description', widget: 'string' },
-                { label: 'Body', name: 'body', widget: 'markdown' },
-              ]
-            }
-          ]
+          name: 'test',
+          label: 'Test Collection',
+          folder: 'docs/src/content/docs/test',
+          create: true,
+          fields: [
+            { label: 'Title', name: 'title', widget: 'string' },
+            { label: 'Body', name: 'body', widget: 'markdown' }
+          ],
         },
       ],
     };
