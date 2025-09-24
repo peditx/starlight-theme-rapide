@@ -4,9 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-  <style>
-    .nc-loginButton { display: none !important; } /* اگر دکمه login آمد */
-  </style>
 </head>
 <body>
   <script>
@@ -15,8 +12,8 @@
         name: 'github',
         repo: 'peditx/starlight-theme-rapide',
         branch: 'main',
-        auth_type: 'token',
-        token: "{{ env.YOUR_GITHUB_PERSONAL_ACCESS_TOKEN }}",  // ← Secret واقعی
+        auth_type: 'implicit',
+        app_id: 'Ov23liMQ36VXRPwraTVC',
       },
       media_folder: 'docs/public/uploads',
       public_folder: '/uploads',
@@ -34,10 +31,8 @@
         },
       ],
     };
-    console.log("CMS_CONFIG loaded:", window.CMS_CONFIG);
   </script>
 
-  <!-- نسخه پایدار Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
 </body>
 </html>
