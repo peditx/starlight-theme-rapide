@@ -17,7 +17,19 @@
       },
       media_folder: 'docs/public/uploads',
       public_folder: '/uploads',
-      collections: [], // Empty to test the core connection
+      collections: [
+        {
+          name: 'projects',
+          label: 'Projects',
+          folder: 'docs/src/content/docs',
+          create: true,
+          fields: [
+            { label: 'Title', name: 'title', widget: 'string' },
+            { label: 'Publish Date', name: 'date', widget: 'datetime', required: false },
+            { label: 'Body', name: 'body', widget: 'markdown' },
+          ],
+        },
+      ],
     };
   </script>
   <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
