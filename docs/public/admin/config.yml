@@ -1,21 +1,13 @@
-# This is the final and correct configuration file.
-# Please copy and paste this content exactly as it is.
-
 backend:
   name: github
-  repo: peditx/starlight-theme-rapide # Your GitHub username/repo
-  branch: main # or master
-  # Using Netlify's free open-source authentication helper.
-  # This is the simplest and most reliable method for direct GitHub login.
+  repo: peditx/starlight-theme-rapide
+  branch: main
   base_url: https://api.netlify.com
   auth_endpoint: /auth
 
-# Where to store uploaded media
 media_folder: "docs/public/uploads"
-# The public path for accessing uploaded media
 public_folder: "/uploads"
 
-# Content collections
 collections:
   - name: "project"
     label: "Projects"
