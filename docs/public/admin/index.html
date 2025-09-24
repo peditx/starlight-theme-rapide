@@ -4,12 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- This line tells the CMS to load a DIFFERENT and NEW config file -->
-    <link href="/admin/config-new.yml" type="text/yaml" rel="cms-config-url" />
+    <!-- Load the main CMS script -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- This script will now load config-new.yml and bypass any cache -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- The CMS will be initialized here -->
+    <script>
+      CMS.init({
+        config: {
+          // Use the direct GitHub backend
+          backend: {
+            name: 'github',
+            repo: 'peditx/starlight-theme-rapide',
+            branch: 'main',
+          },
+
+          // Media files will be stored in this folder
+          media_folder: 'docs/public/uploads',
+          public_folder: '/uploads',
+
+          // This is your content collection
+          collections: [
+            {
+              name: 'project',
+              label: 'Projects',
+              folder: 'docs/src/content/docs',
+              create: true,
+              fields: [
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Body', name: 'body', widget: 'markdown' },
+              ],
+            },
+          ],
+        },
+      });
+    </script>
   </body>
 </html>
 
