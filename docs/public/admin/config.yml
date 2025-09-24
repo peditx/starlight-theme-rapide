@@ -20,4 +20,3 @@ collections:
       - { label: "Header Image", name: "image", widget: "image", required: false }
       - { label: "Download File", name: "file", widget: "file", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
-
