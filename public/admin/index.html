@@ -4,27 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
+  <!-- اسکریپت احراز هویت نت‌لیفای -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
   <script>
-    // این فایل کانفیگ رو در مرحله بعد می‌سازیم
     CMS.init({ config: {
       backend: {
-        name: 'github',
-        repo: 'peditx/starlight-theme-rapide', // <-- نام کاربری و ریپازیتوری خودتون رو بذارید
+        name: 'git-gateway', // <-- استفاده از روش صحیح git-gateway
         branch: 'main', 
       },
       media_folder: 'docs/public/uploads',
       public_folder: '/uploads',
       collections: [
         {
-          name: 'project',
-          label: 'Projects',
-          folder: 'docs/src/content/docs', // <-- مسیری که فایل‌های Markdown ذخیره می‌شن
+          name: 'project', // <-- نام مجموعه از کانفیگ شما گرفته شد
+          label: 'Projects', // <-- برچسب از کانفیگ شما گرفته شد
+          folder: 'docs/src/content/docs',
           create: true,
           slug: '{{slug}}',
-          fields: [
+          fields: [ // <-- لیست فیلدهای دلخواه شما اضافه شد
             { label: 'Title', name: 'title', widget: 'string' },
             { label: 'Publish Date', name: 'date', widget: 'datetime' },
             { label: 'Header Image', name: 'image', widget: 'image', required: false },
@@ -37,3 +38,4 @@
   </script>
 </body>
 </html>
+
