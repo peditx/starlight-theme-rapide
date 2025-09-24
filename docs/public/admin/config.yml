@@ -1,9 +1,14 @@
 # This is the final and correct configuration file.
-# All indentation has been fixed to use standard spaces.
+# Please copy and paste this content exactly as it is.
 
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: peditx/starlight-theme-rapide # Your GitHub username/repo
+  branch: main # or master
+  # Using Netlify's free open-source authentication helper.
+  # This is the simplest and most reliable method for direct GitHub login.
+  base_url: https://api.netlify.com
+  auth_endpoint: /auth
 
 # Where to store uploaded media
 media_folder: "docs/public/uploads"
@@ -23,3 +28,4 @@ collections:
       - { label: "Header Image", name: "image", widget: "image", required: false }
       - { label: "Download File", name: "file", widget: "file", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
