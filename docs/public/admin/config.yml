@@ -1,0 +1,25 @@
+# This is the new configuration file for Decap CMS.
+# It's cleaner and more stable than embedding config in HTML.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# The media_folder is where all uploaded files will be stored in your repo.
+media_folder: "docs/public/uploads"
+# The public_folder is the public-facing path to the media folder.
+public_folder: "/uploads"
+
+# This is the main configuration for your content types.
+collections:
+  - name: "project"
+    label: "Projects"
+    folder: "docs/src/content/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Header Image", name: "image", widget: "image", required: false }
+      - { label: "Download File", name: "file", widget: "file", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
