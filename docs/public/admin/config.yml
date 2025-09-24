@@ -2,34 +2,15 @@ backend:
   name: github
   repo: peditx/starlight-theme-rapide
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: /auth
 
 media_folder: "docs/public/uploads"
-public_folder: "/uploads"
 
 collections:
   - name: "project"
     label: "Projects"
     folder: "docs/src/content/docs"
     create: true
-    slug: "{{slug}}"
     fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-      - label: "Header Image"
-        name: "image"
-        widget: "image"
-        required: false
-      - label: "Download File"
-        name: "file"
-        widget: "file"
-        required: false
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
