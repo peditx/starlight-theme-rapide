@@ -4,10 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
+  <!-- این اسکریپت برای خواندن لینک ایمیل و نمایش فرم رمز عبور ضروری است -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <!-- This div is the explicit target for the CMS to attach its UI to. -->
+  <!-- این نقطه اتصال برای پنل مدیریت است -->
   <div id="nc-root"></div>
+  
+  <!-- اسکریپت اصلی پنل مدیریت -->
   <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
 </body>
 </html>
