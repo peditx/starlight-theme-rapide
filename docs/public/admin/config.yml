@@ -1,20 +1,25 @@
 backend:
   name: github
-  repo: peditx/starlight-theme-rapide
-  branch: main
-  auth_type: implicit
-  app_id: Ov23liMQ36VXRPwraTVC   # همان App ID Netlify
-  # redirect_url توسط Netlify خودش handle می‌شود
+  repo: peditx/starlight-theme-rapide # نام ریپازیتوری شما (صحیح است)
+  branch: main                       # شاخه اصلی شما (صحیح است)
+  auth_type: implicit                # استفاده از روش لاگین مستقیم در مرورگر (عالی!)
+  app_id: Ov23liMQ36VXRPwraTVC     # <-- این باید Client ID اپلیکیشن OAuth شما در گیت‌هاب باشد
 
-media_folder: "docs/public/uploads"
+# مسیر ذخیره فایل‌های مدیا (عکس و...)
+# پوشه public در ریشه پروژه Astro قرار دارد
+media_folder: "public/uploads"
 public_folder: "/uploads"
 
+# مجموعه محتوایی شما برای صفحات Starlight
 collections:
-  - name: "projects"
-    label: "Projects"
-    folder: "docs/src/content/docs"
+  - name: "docs"
+    label: "صفحات"
+    folder: "src/content/docs" # <-- مسیر صحیح پوشه محتوای Starlight
     create: true
+    slug: "{{slug}}"
+    extension: "mdx" # یا md
+    format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+      - { label: "Description", name: "description", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
